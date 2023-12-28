@@ -3,21 +3,26 @@ package com.example.unidb;
 import android.app.Application;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
-    Application app;
+    private final Application app;
+    private final Database database;
 
-    public ViewPagerAdapter(FragmentManager fragmentManager, Application app) {
+    public ViewPagerAdapter(FragmentManager fragmentManager, Application app, Database database) {
         super(fragmentManager);
         this.app = app;
+        this.database = database;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = null;
+        // Set default fragment
+        Fragment fragment = new FragmentAdministration();
         try {
             switch (position) {
                 case 0:
@@ -30,10 +35,13 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                     fragment = new FragmentStudents();
                     break;
                 default:
+                    // Set default fragment again just in case
+                    fragment = new FragmentAdministration();
                     throw new Exception("Invalid Fragment");
             }
         } catch (Exception e) {
             Toast.makeText(this.app, e.getMessage(), Toast.LENGTH_SHORT).show();
+            return fragment;
         }
 
         return fragment;
