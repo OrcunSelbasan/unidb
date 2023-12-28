@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">unidb</string>
-    <string name="tabItemAdministration">Admin</string>
-    <string name="tabItemRegistration">Registration</string>
-    <string name="tabItemStudents">Students</string>
+    <string name="hintEnterFacultyName">Enter Faculty Name</string>
+    <string name="hintEnterDepartmentName">Enter Deparment Name</string>
+    <string name="hintEnterDepartmentCode">Enter Deparment Code</string>
+    <string name="hintEnterLecturerName">Enter Lecturer Name</string>
+    <string name="hintEnterLecturerSurname">Enter Lecturer Surname</string>
+    <string name="addFaculty">Add Faculty</string>
+    <string name="deleteFaculty">Delete Faculty</string>
+    <string name="searchFaculty">Search Faculty</string>
+    <string name="updateFaculty">Update Faculty</string>
+    <string name="addDepartment">Add Department</string>
+    <string name="deleteDepartment">Delete Department</string>
+    <string name="searchDepartment">Search Department</string>
+    <string name="updateDepartment">Update Department</string>
+    <string name="addLecturer">Add Lecturer</string>
+    <string name="deleteLecturer">Delete Lecturer</string>
+    <string name="searchLecturer">Search Lecturer</string>
+    <string name="updateLecturer">Update Lecturer</string>
 </resources>

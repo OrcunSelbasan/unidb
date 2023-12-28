@@ -4,68 +4,215 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
-
-    <!-- Add your UI components for Administration Tab here -->
-
-    <ScrollView
+    <!-- Faculty Form -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/facultySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Faculty Name -->
+        <EditText
+            android:id="@+id/editTextFacultyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintEnterFacultyName" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Faculty Input -->
-            <EditText
-                android:id="@+id/editTextFaculty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Faculty"/>
-
-            <!-- Department Input -->
-            <EditText
-                android:id="@+id/editTextDepartment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Department"/>
-
-            <!-- Lecturer Input -->
-            <EditText
-                android:id="@+id/editTextLecturer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Lecturer"/>
-
+            android:gravity="center"
+            android:orientation="horizontal">
             <!-- Add Button -->
             <Button
-                android:id="@+id/btnAdd"
+                android:id="@+id/btnAddFaculty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add"/>
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/addFaculty" />
 
             <!-- Delete Button -->
             <Button
-                android:id="@+id/btnDelete"
+                android:id="@+id/btnDeleteFaculty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delete"/>
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/deleteFaculty" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
             <!-- Update Button -->
             <Button
-                android:id="@+id/btnUpdate"
+                android:id="@+id/btnUpdateFaculty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Update"/>
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/updateFaculty" />
 
             <!-- Search Button -->
             <Button
-                android:id="@+id/btnSearch"
+                android:id="@+id/btnSearchFaculty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Search"/>
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/searchFaculty" />
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <!-- Department Form -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/departmentSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editTextDepartmentName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintEnterDepartmentName" />
+        <EditText
+            android:id="@+id/editTextDepartmentCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintEnterDepartmentCode" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <!-- Add Button -->
+            <Button
+                android:id="@+id/btnAddDepartment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/addDepartment" />
+
+            <!-- Delete Button -->
+            <Button
+                android:id="@+id/btnDeleteDepartment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/deleteDepartment" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <!-- Update Button -->
+            <Button
+                android:id="@+id/btnUpdateDepartment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/updateDepartment" />
+
+            <!-- Search Button -->
+            <Button
+                android:id="@+id/btnSearchDepartment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/searchDepartment" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Divider -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <!-- Lecturer Form -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/lecturerSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editTextLecturerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintEnterLecturerName" />
+
+        <EditText
+            android:id="@+id/editTextLecturerSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintEnterLecturerSurname" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <!-- Add Button -->
+            <Button
+                android:id="@+id/btnAddLecturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/addLecturer" />
+
+            <!-- Delete Button -->
+            <Button
+                android:id="@+id/btnDeleteLecturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/deleteLecturer" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <!-- Update Button -->
+            <Button
+                android:id="@+id/btnUpdateLecturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/updateLecturer" />
+
+            <!-- Search Button -->
+            <Button
+                android:id="@+id/btnSearchLecturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5sp"
+                android:text="@string/searchLecturer" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
 
