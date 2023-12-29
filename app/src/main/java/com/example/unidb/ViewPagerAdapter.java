@@ -22,11 +22,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         // Set default fragment
-        Fragment fragment = new FragmentAdministration();
+        Fragment fragment = new FragmentAdministration(this.database);
         try {
             switch (position) {
                 case 0:
-                    fragment = new FragmentAdministration();
+                    fragment = new FragmentAdministration(this.database);
                     break;
                 case 1:
                     fragment = new FragmentRegistration();
@@ -36,7 +36,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                     break;
                 default:
                     // Set default fragment again just in case
-                    fragment = new FragmentAdministration();
+                    fragment = new FragmentAdministration(this.database);
                     throw new Exception("Invalid Fragment");
             }
         } catch (Exception e) {

@@ -13,12 +13,12 @@ import android.widget.Toast;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-    Database database = new Database(getApplication());
+    Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        this.database = new Database(getApplication());
         initTabLayout(getApplication());
     }
 
@@ -42,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.about:
-                Toast.makeText(getApplication(), "About", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.help:
-                Toast.makeText(getApplication(), "Help", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "This is student management mobile app", Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

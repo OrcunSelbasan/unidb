@@ -80,7 +80,7 @@ class StatementBuilder {
         return result;
     }
 
-    private long generateUID() {
+    public long generateUID() {
         boolean isAlreadyRegistered;
         Cursor cursor;
         long randomNumber;
