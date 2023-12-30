@@ -17,4 +17,17 @@
     <string name="deleteLecturer">Delete Lecturer</string>
     <string name="searchLecturer">Search Lecturer</string>
     <string name="updateLecturer">Update Lecturer</string>
+    <string name="faculty">Faculty</string>
+    <string name="department">Department</string>
+    <string name="Lecturer">Lecturer</string>
+    <string name="hintEnterStudentId">Enter Student ID</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="hintEnterStudentName">Enter Student Name</string>
+    <string name="hintEnterStudentSurname">Enter Student Surname</string>
+    <string name="register">Register</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+    <string name="search">Search</string>
+    <string name="refresh">Refresh</string>
 </resources>

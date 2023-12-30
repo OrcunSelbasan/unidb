@@ -10,6 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class FragmentStudents extends Fragment {
+    private Database db;
+
+    public FragmentStudents(Database db) {
+        this.db = db;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

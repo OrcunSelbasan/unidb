@@ -27,6 +27,19 @@ public class Database {
         }
     }
 
+    public SQLiteDatabase getDatabase() {
+        try {
+            if (database != null) {
+                return database;
+            } else {
+                throw new Exception("Database error!");
+            }
+        } catch (Exception e) {
+            Toast.makeText(app.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        return null;
+    }
+
     protected ArrayList<HashMap> readAll(String table) {
         ArrayList<HashMap> results = new ArrayList<>();
         try {

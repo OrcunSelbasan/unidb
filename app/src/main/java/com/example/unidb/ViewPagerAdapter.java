@@ -5,12 +5,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
     private final Application app;
     private final Database database;
+    private FragmentActivity fm = new FragmentActivity();
 
     public ViewPagerAdapter(FragmentManager fragmentManager, Application app, Database database) {
         super(fragmentManager);
@@ -29,10 +32,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                     fragment = new FragmentAdministration(this.database);
                     break;
                 case 1:
-                    fragment = new FragmentRegistration();
+                    fragment = new FragmentRegistration(this.database);
                     break;
                 case 2:
-                    fragment = new FragmentStudents();
+                    fragment = new FragmentStudents(this.database);
                     break;
                 default:
                     // Set default fragment again just in case
