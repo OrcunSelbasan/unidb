@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FragmentRegistration extends Fragment {
+    /*
+    Registration Page; Button, EditText, RadioGroup, RadioButton, Spinner, arrayAdapter, ArrayList, StatementBuilder variables initialized.
+    */
     Button addStudent, cancelStudent, updateStudent, searchStudent, refresh;
     EditText inputId, inputName, inputSurname;
     RadioGroup gender;
@@ -33,7 +36,9 @@ public class FragmentRegistration extends Fragment {
     StatementBuilder sb;
     long facId, depId, lecId, stuId;
     Database db;
-
+    /*
+    . Reading the database that is in the Registration Page.
+    */
     public FragmentRegistration(Database db) {
         this.db = db;
         try {
@@ -46,7 +51,10 @@ public class FragmentRegistration extends Fragment {
             return;
         }
     }
-
+    /*
+     . administration.xml has paired with FragmentAdministration.java.
+     . Initializing the fields.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -78,7 +86,9 @@ public class FragmentRegistration extends Fragment {
         facSpinner.setAdapter(facAdapter);
         lecSpinner.setAdapter(lecAdapter);
         depSpinner.setAdapter(depAdapter);
-
+        /*
+         . Faculty Spinner which helps us to select the item in the list.
+        */
         facSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -88,7 +98,10 @@ public class FragmentRegistration extends Fragment {
                     Toast.makeText(view.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
-
+            /*
+                . It is not necessary to use in here but it is required to have it in this file
+                . due to AdapterView.OnItemSelectedListener.
+             */
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 try {
@@ -138,7 +151,9 @@ public class FragmentRegistration extends Fragment {
                 }
             }
         });
-
+        /*
+         . Adding, registering the student
+         */
         addStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

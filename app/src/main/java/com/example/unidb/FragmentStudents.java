@@ -48,6 +48,7 @@ public class FragmentStudents extends Fragment {
             }
         });
         this.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //when Item is cliced , informations will be displayed
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 View popUpView = inflater.inflate(R.layout.popup, null, false);

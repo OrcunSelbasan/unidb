@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.database = new Database(getApplication());
+        //initialize tabLayout
         initTabLayout(getApplication());
     }
 
@@ -26,22 +27,24 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.view_pager);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), app, this.database);
         viewPager.setAdapter(viewPagerAdapter);
-
+        // Get TabLayout from the layout file
         TabLayout tabLayout = findViewById(R.id.tab_layout);
+        // Link TabLayout with ViewPager
         tabLayout.setupWithViewPager(viewPager);
 
         return tabLayout;
     }
-
+    //create option menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
-
+    //when the option is selected toast message will be displayed
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.about:
+                //
                 Toast.makeText(getApplication(), "This is student management mobile app", Toast.LENGTH_LONG).show();
                 return true;
             default:
