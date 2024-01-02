@@ -30,4 +30,9 @@
     <string name="update">Update</string>
     <string name="search">Search</string>
     <string name="refresh">Refresh</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="stuID">Student ID</string>
+    <string name="gender">Gender</string>
+    <string name="advisor">Advisor</string>
 </resources>

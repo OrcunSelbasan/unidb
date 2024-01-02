@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
     android:layout_gravity="start"
+    android:background="@color/teal_200"
     android:gravity="start"
     android:orientation="vertical">
 
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:layout_marginEnd="10sp"
-            android:text="Name"
+            android:text="@string/name"
             android:textStyle="bold" />
 
         <TextView
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:layout_marginEnd="10sp"
-            android:text="Surname"
+            android:text="@string/surname"
             android:textStyle="bold" />
 
         <TextView
@@ -51,13 +51,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:layout_marginEnd="10sp"
-            android:text="Student ID"
+            android:text="@string/stuID"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/id"
             android:layout_width="match_parent"
@@ -70,13 +72,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:layout_marginEnd="10sp"
-            android:text="Gender"
+            android:text="@string/gender"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/gender"
             android:layout_width="match_parent"
@@ -98,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5sp"
-                android:text="Faculty"
+                android:text="@string/faculty"
                 android:textStyle="bold" />
 
             <TextView
@@ -117,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5sp"
-                android:text="Department"
+                android:text="@string/department"
                 android:textStyle="bold" />
 
             <TextView
@@ -136,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5sp"
-                android:text="Advisor"
+                android:text="@string/advisor"
                 android:textStyle="bold" />
 
             <TextView

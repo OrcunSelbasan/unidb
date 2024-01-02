@@ -87,7 +87,7 @@ public class FragmentStudents extends Fragment {
     }
 
     void reload() {
-        Cursor cursor = db.getDatabase().query("student",null,null,null,null, null, null);
+        Cursor cursor = db.getDatabase().query(Constants.student,null,null,null,null, null, null);
         if (!this.data.isEmpty()) {
             this.data.clear();
         }

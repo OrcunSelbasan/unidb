@@ -24,7 +24,7 @@ import java.util.HashMap;
 
 public class FragmentRegistration extends Fragment {
     /*
-    Registration Page; Button, EditText, RadioGroup, RadioButton, Spinner, arrayAdapter, ArrayList, StatementBuilder variables initialized.
+    Registration Page; Button, EditText, RadioGroup, RadioButton, Spinner, arrayAdapter, ArrayList, IdGenerator variables initialized.
     */
     Button addStudent, cancelStudent, updateStudent, searchStudent, refresh;
     EditText inputId, inputName, inputSurname;
@@ -33,7 +33,7 @@ public class FragmentRegistration extends Fragment {
     Spinner facSpinner, depSpinner, lecSpinner;
     ArrayAdapter facAdapter, depAdapter, lecAdapter;
     ArrayList<HashMap> faculties, departments, lecturers;
-    StatementBuilder sb;
+    IdGenerator generator;
     long facId, depId, lecId, stuId;
     Database db;
     /*
@@ -42,11 +42,11 @@ public class FragmentRegistration extends Fragment {
     public FragmentRegistration(Database db) {
         this.db = db;
         try {
-            faculties = db.readAll("faculty");
-            departments = db.readAll("department");
-            lecturers = db.readAll("lecturer");
-            sb = new StatementBuilder(db.getDatabase());
-            stuId = sb.generateUID();
+            faculties = db.readAll(Constants.faculty);
+            departments = db.readAll(Constants.department);
+            lecturers = db.readAll(Constants.lecturer);
+            generator = new IdGenerator(db.getDatabase());
+            stuId = generator.generateUID();
         } catch (Exception e) {
             return;
         }
@@ -166,7 +166,7 @@ public class FragmentRegistration extends Fragment {
                     cv.put("faculty", getValue("fac", facId));
                     cv.put("department", getValue("dep", depId));
                     cv.put("advisor", getValue("lec", lecId));
-                    db.getDatabase().insert("student", null, cv);
+                    db.getDatabase().insert(Constants.student, null, cv);
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -178,7 +178,7 @@ public class FragmentRegistration extends Fragment {
             public void onClick(View v) {
                 try {
                     String[] args = new String[]{inputName.getText().toString(), inputSurname.getText().toString()};
-                    db.getDatabase().delete("student", "name=? AND surname=?", args);
+                    db.getDatabase().delete(Constants.student, "name=? AND surname=?", args);
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -190,7 +190,7 @@ public class FragmentRegistration extends Fragment {
             public void onClick(View v) {
                 try {
                     String[] args = new String[]{inputName.getText().toString(), inputSurname.getText().toString(), getGender(v)};
-                    Cursor cursor = db.getDatabase().query("student", null, "name=? AND surname=? AND gender=?", args, null, null, null);
+                    Cursor cursor = db.getDatabase().query(Constants.student, null, "name=? AND surname=? AND gender=?", args, null, null, null);
                     if (cursor.moveToFirst()) {
                         int colName = cursor.getColumnIndexOrThrow("name");
                         int colSurname = cursor.getColumnIndexOrThrow("surname");
@@ -219,7 +219,7 @@ public class FragmentRegistration extends Fragment {
                     long id = -1;
 
                     String[] args = new String[]{inputName.getText().toString(), inputSurname.getText().toString()};
-                    Cursor cursor = db.getDatabase().query("student", null, "name=? AND surname=?", args, null, null, null);
+                    Cursor cursor = db.getDatabase().query(Constants.student, null, "name=? AND surname=?", args, null, null, null);
                     if (cursor.moveToFirst()) {
                         int colName = cursor.getColumnIndexOrThrow("name");
                         int colSurname = cursor.getColumnIndexOrThrow("surname");
@@ -229,7 +229,7 @@ public class FragmentRegistration extends Fragment {
                         String message = Long.toString(cursor.getLong(colID)) + "-" + cursor.getString(colName) + " " + cursor.getString(colSurname) + "(" + cursor.getString(colGender) + ")";
                         Toast.makeText(v.getContext(), message, Toast.LENGTH_SHORT).show();
                     }
-                    db.getDatabase().update("student", cv,"id=?", new String[]{Long.toString(id)});
+                    db.getDatabase().update(Constants.student, cv,"id=?", new String[]{Long.toString(id)});
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -259,7 +259,7 @@ public class FragmentRegistration extends Fragment {
                 arr = lecturers;
                 break;
             default:
-                throw new Exception("Unknown type");
+                throw new Exception(Constants.unknownType);
         }
         return arr;
     }
@@ -290,15 +290,15 @@ public class FragmentRegistration extends Fragment {
         } else if (id == female.getId()) {
             return female.getText().toString();
         } else {
-            throw new Exception("Unknown gender");
+            throw new Exception(Constants.unknownGender);
         }
     }
 
     void updateRecords() {
         try {
-            faculties = db.readAll("faculty");
-            departments = db.readAll("department");
-            lecturers = db.readAll("lecturer");
+            faculties = db.readAll(Constants.faculty);
+            departments = db.readAll(Constants.department);
+            lecturers = db.readAll(Constants.lecturer);
 
             lecAdapter.clear();
             lecAdapter.addAll(lecturers);

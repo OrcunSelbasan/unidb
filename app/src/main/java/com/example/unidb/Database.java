@@ -14,6 +14,7 @@ public class Database {
     private static SQLiteDatabase database = null;
     private final Application app;
     private String path = null;
+
     //Create and connect database via app
     public Database(Application app) {
         this.app = app;
@@ -26,19 +27,21 @@ public class Database {
             Toast.makeText(app.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
     //if database is null returns null and shows toast Message if it is not returns database
     public SQLiteDatabase getDatabase() {
         try {
             if (database != null) {
                 return database;
             } else {
-                throw new Exception("Database error!");
+                throw new Exception(Constants.errorDB);
             }
         } catch (Exception e) {
             Toast.makeText(app.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         return null;
     }
+
     //to read all data from database
     protected ArrayList<HashMap> readAll(String table) {
         ArrayList<HashMap> results = new ArrayList<>();
@@ -69,7 +72,7 @@ public class Database {
                         record.put("surname", cursor.getString(cursor.getColumnIndexOrThrow("surname")));
                         break;
                     default:
-                        throw new Exception("Unknown read error!");
+                        throw new Exception(Constants.unknownRead);
                 }
                 //add all record inside results
                 results.add(record);
@@ -104,7 +107,7 @@ public class Database {
                     values = new String[]{(String) data.get("name"), (String) data.get("surname")};
                     break;
                 default:
-                    throw new Exception("An error occured");
+                    throw new Exception(Constants.error);
             }
             try {
                 Cursor cursor = database.query(
@@ -121,9 +124,9 @@ public class Database {
                     return cursor.getLong(cursor.getColumnIndexOrThrow("id"));
                 }
             } catch (Exception e) {
-                throw new Exception("Read error!" + e.getMessage());
+                throw new Exception(Constants.unknownRead + e.getMessage());
             }
-            throw new Exception("Invalid read");
+            throw new Exception(Constants.invalidRead);
         } catch (Exception e) {
             Toast.makeText(this.app.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -133,30 +136,25 @@ public class Database {
 
     protected void create(String table, HashMap data) {
         try {
-            String name, surname, code, gender, department, faculty, advisor, statement;
+            String name, surname, code, statement;
             ContentValues cv = new ContentValues();
             Cursor cursor;
-            //create uid for student
-            if (table.equals(Constants.student)) {
-                StatementBuilder statementBuilder = new StatementBuilder(database);
-                cv.put("id", statementBuilder.generateUID());
-            }
 
             switch (table) {
                 // select specific database for each case
                 case Constants.faculty:
                     name = (String) data.get("name");
                     if (name.isEmpty()) {
-                        throw new Exception("Empty faculty name");
+                        throw new Exception(Constants.emptyFacName);
                     }
                     //put value name into map of key "name"
                     cv.put("name", name);
                     //query for checking if name is exist
-                    statement = "SELECT * FROM faculty WHERE name='"+name+"';";
+                    statement = "SELECT * FROM faculty WHERE name='" + name + "';";
                     cursor = database.rawQuery(statement, null);
                     //if exist then throw exception
                     if (cursor.moveToFirst()) {
-                        throw new Exception("Faculty exists");
+                        throw new Exception(Constants.facExists);
                     }
                     break;
                 case Constants.department:
@@ -167,18 +165,18 @@ public class Database {
                     cv.put("code", code);
                     //checking if name or code is empty
                     if (name.isEmpty()) {
-                        throw new Exception("Empty department name");
+                        throw new Exception(Constants.emptyDeptName);
                     }
 
                     if (code.isEmpty()) {
-                        throw new Exception("Empty department code");
+                        throw new Exception(Constants.emptyDeptCode);
                     }
                     //query for checking if name or code is exist
-                    statement = "SELECT * FROM department WHERE name='"+name+"' OR code='" +code +"';";
+                    statement = "SELECT * FROM department WHERE name='" + name + "' OR code='" + code + "';";
                     cursor = database.rawQuery(statement, null);
                     //if exist then throw exception
                     if (cursor.moveToFirst()) {
-                        throw new Exception("Department Exists");
+                        throw new Exception(Constants.deptExists);
                     }
                     break;
                 case Constants.lecturer:
@@ -188,17 +186,17 @@ public class Database {
                     cv.put("name", name);
                     cv.put("surname", surname);
                     if (name.length() < 1) {
-                        throw new Exception("Empty lecturer name");
+                        throw new Exception(Constants.emptyLecName);
                     }
 
                     if (surname.length() < 1) {
-                        throw new Exception("Empty lecturer surname");
+                        throw new Exception(Constants.emptyLecSurname);
                     }
                     //query for checking if name and surname is exist
-                    statement = "SELECT * FROM lecturer WHERE name='"+name+"' AND surname='" +surname +"';";
+                    statement = "SELECT * FROM lecturer WHERE name='" + name + "' AND surname='" + surname + "';";
                     cursor = database.rawQuery(statement, null);
                     if (cursor.moveToFirst()) {
-                        throw new Exception("Lecturer Exists");
+                        throw new Exception(Constants.lecExists);
                     }
                     break;
                 default:
@@ -206,7 +204,7 @@ public class Database {
             //insert all data that have been putted in cv
             long result = database.insert(table, null, cv);
             if (result < 0) {
-                throw new Exception("Invalid Create");
+                throw new Exception(Constants.invalidCreate);
             }
         } catch (Exception e) {
             Toast.makeText(this.app.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -222,7 +220,7 @@ public class Database {
                 case Constants.faculty:
                     name = (String) data.get("name");
                     if (name.isEmpty()) {
-                        throw new Exception("Empty faculty name");
+                        throw new Exception(Constants.emptyFacName);
                     }
                     //put name value that have been gotten from data
                     cv.put("name", name);
@@ -237,11 +235,11 @@ public class Database {
                     cv.put("code", code);
 
                     if (name.isEmpty()) {
-                        throw new Exception("Empty department name");
+                        throw new Exception(Constants.emptyDeptName);
                     }
 
                     if (code.isEmpty()) {
-                        throw new Exception("Empty department code");
+                        throw new Exception(Constants.emptyDeptCode);
                     }
                     break;
                 case Constants.lecturer:
@@ -253,11 +251,11 @@ public class Database {
                     cv.put("name", name);
                     cv.put("surname", surname);
                     if (name.length() < 1) {
-                        throw new Exception("Empty lecturer name");
+                        throw new Exception(Constants.emptyLecName);
                     }
 
                     if (surname.length() < 1) {
-                        throw new Exception("Empty lecturer surname");
+                        throw new Exception(Constants.emptyLecSurname);
                     }
                     break;
                 default:
@@ -266,18 +264,19 @@ public class Database {
             //update database which is respect to id
             int result = database.update(table, cv, "id=?", new String[]{id});
             if (result < 0) {
-                throw new Exception("Invalid update");
+                throw new Exception(Constants.invalidUpdate);
             }
         } catch (Exception e) {
             Toast.makeText(app.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
     //deletes table which is respect to id
     protected void delete(String table, long id) {
         try {
             int result = database.delete(table, "id=?", new String[]{Long.toString(id)});
             if (result < 0) {
-                throw new Exception("Invalid update");
+                throw new Exception(Constants.invalidDelete);
             }
         } catch (Exception e) {
             Toast.makeText(app.getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();

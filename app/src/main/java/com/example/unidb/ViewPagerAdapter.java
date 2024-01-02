@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
     private final Application app;
@@ -40,7 +39,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 default:
                     // Set default fragment again just in case
                     fragment = new FragmentAdministration(this.database);
-                    throw new Exception("Invalid Fragment");
+                    throw new Exception(Constants.invalidFragment);
             }
         } catch (Exception e) {
             Toast.makeText(this.app, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -61,16 +60,16 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         try {
             switch (position) {
                 case 0:
-                    title = "Administration";
+                    title = Constants.administration;
                     break;
                 case 1:
-                    title = "Registration";
+                    title = Constants.registration;
                     break;
                 case 2:
-                    title = "Students";
+                    title = Constants.students;
                     break;
                 default:
-                    throw new Exception("Invalid Page Title");
+                    throw new Exception(Constants.invalidPageTitle);
             }
         } catch (Exception e) {
             Toast.makeText(this.app, e.getMessage(), Toast.LENGTH_SHORT).show();

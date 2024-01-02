@@ -4,27 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
+
     <Button
         android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/refresh"/>
+        android:text="@string/refresh" />
 
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="30dp"
-        android:textSize="22sp"
         android:orientation="vertical"
-        android:id="@+id/main"/>
+        android:textSize="22sp" />
     <!-- List View to Display Registered Students -->
     <ListView
         android:id="@+id/listViewRegisteredStudents"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
         android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"
-        android:choiceMode="singleChoice"/>
+        android:dividerHeight="1dp" />
 
 </LinearLayout>

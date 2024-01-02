@@ -50,7 +50,6 @@ public class FragmentAdministration extends Fragment {
             departments = db.readAll("department");
             lecturers = db.readAll("lecturer");
         } catch (Exception e) {
-            return;
         }
     }
     /*
@@ -96,9 +95,9 @@ public class FragmentAdministration extends Fragment {
         this.departmentSpinner = view.findViewById(R.id.departmentSpinner);
         this.lecturerSpinner = view.findViewById(R.id.lecturerSpinner);
         try {
-            this.facultyAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_dropdown_item, faculties);
-            this.departmentAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_dropdown_item, departments);
-            this.lectuererAdapter = new ArrayAdapter(view.getContext(), android.R.layout.simple_spinner_dropdown_item, lecturers);
+            this.facultyAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, faculties);
+            this.departmentAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, departments);
+            this.lectuererAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, lecturers);
 
             facultySpinner.setAdapter(facultyAdapter);
             departmentSpinner.setAdapter(departmentAdapter);
@@ -113,7 +112,6 @@ public class FragmentAdministration extends Fragment {
                     try {
                         facId = (long) faculties.get(position).get("id");
                         updateRecords();
-
                     } catch (Exception e) {
                         Toast.makeText(view.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -256,7 +254,7 @@ public class FragmentAdministration extends Fragment {
                 @Override
                 public void onClick(View v) {
                     try {
-                        db.delete("faculty", facId);
+                        db.delete(Constants.faculty, facId);
                         updateRecords();
                     } catch (Exception e) {
                         Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -267,7 +265,7 @@ public class FragmentAdministration extends Fragment {
                 @Override
                 public void onClick(View v) {
                     try {
-                        db.delete("department", depId);
+                        db.delete(Constants.department, depId);
                         updateRecords();
                     } catch (Exception e) {
                         Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -278,7 +276,7 @@ public class FragmentAdministration extends Fragment {
                 @Override
                 public void onClick(View v) {
                     try {
-                        db.delete("lecturer", lecId);
+                        db.delete(Constants.lecturer, lecId);
                         updateRecords();
                     } catch (Exception e) {
                         Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -294,9 +292,9 @@ public class FragmentAdministration extends Fragment {
      */
     void updateRecords() {
         try {
-            faculties = db.readAll("faculty");
-            departments = db.readAll("department");
-            lecturers = db.readAll("lecturer");
+            faculties = db.readAll(Constants.faculty);
+            departments = db.readAll(Constants.department);
+            lecturers = db.readAll(Constants.lecturer);
 
             lectuererAdapter.clear();
             lectuererAdapter.addAll(lecturers);
@@ -386,12 +384,12 @@ public class FragmentAdministration extends Fragment {
                             }
                         }
                         if (pos == -1) {
-                            throw new Exception("Something went wrong!");
+                            throw new Exception(Constants.error);
                         }
                         facultySpinner.setSelection(pos);
                         updateRecords();
                     } else {
-                        throw new Exception("Unknown search error!");
+                        throw new Exception(Constants.unknownSearch);
                     }
 
                 } catch (Exception e) {
@@ -417,12 +415,12 @@ public class FragmentAdministration extends Fragment {
                             }
                         }
                         if (pos == -1) {
-                            throw new Exception("Something went wrong!");
+                            throw new Exception(Constants.error);
                         }
                         departmentSpinner.setSelection(pos);
                         updateRecords();
                     } else {
-                        throw new Exception("Unknown search error!");
+                        throw new Exception(Constants.unknownSearch);
                     }
 
                 } catch (Exception e) {
@@ -448,12 +446,12 @@ public class FragmentAdministration extends Fragment {
                             }
                         }
                         if (pos == -1) {
-                            throw new Exception("Something went wrong!");
+                            throw new Exception(Constants.error);
                         }
                         lecturerSpinner.setSelection(pos);
                         updateRecords();
                     } else {
-                        throw new Exception("Unknown search error!");
+                        throw new Exception(Constants.unknownSearch);
                     }
 
                 } catch (Exception e) {

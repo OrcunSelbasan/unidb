@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hintEnterStudentId"
-            android:inputType="number"/>
+            android:inputType="number" />
 
         <!-- Gender Radio Group -->
         <RadioGroup
@@ -29,13 +28,13 @@
                 android:id="@+id/radioButtonMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/male"/>
+                android:text="@string/male" />
 
             <RadioButton
                 android:id="@+id/radioButtonFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/female"/>
+                android:text="@string/female" />
         </RadioGroup>
 
         <!-- Name Input -->
@@ -43,14 +42,14 @@
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hintEnterStudentName"/>
+            android:hint="@string/hintEnterStudentName" />
 
         <!-- Last Name Input -->
         <EditText
             android:id="@+id/editTextLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hintEnterStudentSurname"/>
+            android:hint="@string/hintEnterStudentSurname" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,42 +58,44 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/faculty"/>
+                android:text="@string/faculty" />
+
             <Spinner
                 android:id="@+id/spinnerFaculty"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <!-- Department Input -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/department" />
+
             <Spinner
                 android:id="@+id/spinnerDepartment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <!-- Advisor Input -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Lecturer" />
+
             <Spinner
                 android:id="@+id/spinnerAdvisor"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <!-- Register Button -->
@@ -102,34 +103,34 @@
             android:id="@+id/btnRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/register"/>
+            android:text="@string/register" />
 
         <!-- Cancel Button -->
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cancel"/>
+            android:text="@string/cancel" />
 
         <!-- Update Button -->
         <Button
             android:id="@+id/btnUpdateRegistration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/update"/>
+            android:text="@string/update" />
 
         <!-- Search Button -->
         <Button
             android:id="@+id/btnSearchRegistration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/search"/>
+            android:text="@string/search" />
         <!-- Search Button -->
 
         <Button
             android:id="@+id/btnRefresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/refresh"/>
+            android:text="@string/refresh" />
     </LinearLayout>
 </ScrollView>

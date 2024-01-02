@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         initTabLayout(getApplication());
     }
 
-    public TabLayout initTabLayout(Application app) {
+    public void initTabLayout(Application app) {
         ViewPager viewPager = findViewById(R.id.view_pager);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), app, this.database);
         viewPager.setAdapter(viewPagerAdapter);
@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         // Link TabLayout with ViewPager
         tabLayout.setupWithViewPager(viewPager);
-
-        return tabLayout;
     }
     //create option menu
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,15 +40,11 @@ public class MainActivity extends AppCompatActivity {
     }
     //when the option is selected toast message will be displayed
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.about:
-                //
-                Toast.makeText(getApplication(), "This is student management mobile app", Toast.LENGTH_LONG).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.about) {//
+            Toast.makeText(getApplication(), Constants.menuAboutMessage, Toast.LENGTH_LONG).show();
+            return true;
         }
-
+        return super.onOptionsItemSelected(item);
     }
 
 }

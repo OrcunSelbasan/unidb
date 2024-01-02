@@ -20,7 +20,6 @@ class StudentListAdapter extends BaseAdapter {
     int[] bgColors = new int[]{0xFFe5c3c6, 0xFFe1e9b7,0xFFbcd2d0,0xFF9bedff,0xFFfffd8d};
 
     public StudentListAdapter(Context context, ArrayList<HashMap> data) {
-        // TODO Auto-generated constructor stub
         this.context = context;
         this.data = data;
         inflater = (LayoutInflater) context
@@ -40,7 +39,6 @@ class StudentListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 
@@ -51,18 +49,22 @@ class StudentListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
         View view = convertView;
-        if (view == null)
+        if (view == null) {
             view = inflater.inflate(R.layout.list_item, null);
+        }
+        // Assign elements
         TextView id = view.findViewById(R.id.id);
         TextView name = view.findViewById(R.id.name);
         TextView surname = view.findViewById(R.id.surname);
         LinearLayout wrapper = view.findViewById(R.id.wrapper);
+        // Change element background
         wrapper.setBackgroundColor(getColor());
+        // Change list item data
         id.setText((String) data.get(position).get("id"));
         name.setText((String) data.get(position).get("name"));
         surname.setText((String) data.get(position).get("surname"));
+        // Return view of the list item
         return view;
     }
 }
