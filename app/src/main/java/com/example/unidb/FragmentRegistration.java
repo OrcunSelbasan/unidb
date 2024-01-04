@@ -167,6 +167,8 @@ public class FragmentRegistration extends Fragment {
                     cv.put("department", getValue("dep", depId));
                     cv.put("advisor", getValue("lec", lecId));
                     db.getDatabase().insert(Constants.student, null, cv);
+                    stuId = generator.generateUID();
+                    inputId.setText(Long.toString(stuId));
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -179,6 +181,8 @@ public class FragmentRegistration extends Fragment {
                 try {
                     String[] args = new String[]{inputName.getText().toString(), inputSurname.getText().toString()};
                     db.getDatabase().delete(Constants.student, "name=? AND surname=?", args);
+                    stuId = generator.generateUID();
+                    inputId.setText(Long.toString(stuId));
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -230,6 +234,9 @@ public class FragmentRegistration extends Fragment {
                         Toast.makeText(v.getContext(), message, Toast.LENGTH_SHORT).show();
                     }
                     db.getDatabase().update(Constants.student, cv,"id=?", new String[]{Long.toString(id)});
+                    stuId = generator.generateUID();
+                    inputId.setText(Long.toString(stuId));
+
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
